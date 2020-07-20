@@ -5,7 +5,11 @@ const port = 3000
 
 const baseURL = "http://bbc.com/"
 
-app.get('/', (req, res) => {
+app.get('/', (req, res)=> {
+    res.send("Hello from express")
+})
+
+app.get('/news', (req, res) => {
     async function getData(url) {
         const browser = await puppeteer.launch(); //Step 1
         const page = await browser.newPage(); //Step 2
