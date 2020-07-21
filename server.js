@@ -11,7 +11,13 @@ app.get('/', (req, res)=> {
     
 app.get('/news', (req, res) => {
     async function getData(url) {
-        const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']}); //Step 1
+        const browser = await puppeteer.launch({
+        headless: true,
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+        ]
+        }); //Step 1
         const page = await browser.newPage(); //Step 2
         await page.goto(url); //Step 3
 
