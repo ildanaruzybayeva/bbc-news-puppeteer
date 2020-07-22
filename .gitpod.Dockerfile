@@ -17,25 +17,3 @@ RUN  apt-get update \
      && rm -rf /var/lib/apt/lists/* \
      && wget --quiet https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -O /usr/sbin/wait-for-it.sh \
      && chmod +x /usr/sbin/wait-for-it.sh
-# Install Puppeteer under /node_modules so it's available system-wide
-# ADD package.json package-lock.json /
-RUN bash -c ". .nvm/nvm.sh \
-    && nvm install 13 \
-    && nvm use 13 \
-    && npm install -g yarn && npm install"
-
-# Give back control
-
-# FROM gitpod/workspace-full:latest
-# USER root
-
-# # Install custom tools, runtime, etc.
-# RUN apt-get update && apt-get install -y \
-#     && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
-# # RUN 
-# USER gitpod
-# # Apply user-specific settings
-# # ENV ...
-
-# # Give back control
-# USER root
