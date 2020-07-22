@@ -1,6 +1,8 @@
-const puppeteer = require("puppeteer");
+const http = require("http");
 const express = require('express')
 const app = express()
+const server = http.createServer(app);
+const puppeteer = require("puppeteer");
 const port = 3000
 
 const baseURL = "http://bbc.com/"
@@ -39,5 +41,6 @@ app.get('/news', (req, res) => {
     getData(baseURL)
 })
 
-
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+server.listen(process.env.PORT || 8000, () =>
+  console.log(`Server has started on port 8000.`)
+);
